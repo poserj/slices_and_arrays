@@ -10,71 +10,36 @@ import (
 // go test -v homework_test.go
 
 type CircularQueue struct {
-	values  []int
-	isFull  bool // queue is full or empty
-	isEmpty bool // queue is full or empty
-	start   int  // start index
-	end     int
+	values []int
+	// need to implement
 }
 
 func NewCircularQueue(size int) CircularQueue {
-	cq := CircularQueue{start: 0, end: 0}
-	cq.values = make([]int, size)
-	cq.isEmpty = true
-	if size == 0 {
-		cq.isFull = true
-	}
-	return cq
+	return CircularQueue{} // need to implement
 }
 
 func (q *CircularQueue) Push(value int) bool {
-	if q.isFull {
-		return false
-	}
-
-	q.values[q.end] = value
-	q.end = (q.end + 1) % len(q.values)
-	q.isFull = q.end == q.start
-	q.isEmpty = false
-	return true
+	return false // need to implement
 }
 
 func (q *CircularQueue) Pop() bool {
-	if !q.isFull && q.start == q.end {
-		//empty queue
-		q.isEmpty = true
-		return false
-	} else {
-		q.start = (q.start + 1) % len(q.values)
-		q.isFull = false
-		q.isEmpty = false
-		return true
-	}
+	return false // need to implement
 }
 
 func (q *CircularQueue) Front() int {
-	if q.Empty() {
-		return -1
-	}
-	return q.values[q.start]
+	return -1 // need to implement
 }
 
 func (q *CircularQueue) Back() int {
-	if q.Empty() {
-		return -1
-	}
-	if q.end == 0 {
-		return q.values[len(q.values)-1]
-	}
-	return q.values[q.end-1]
+	return -1 // need to implement
 }
 
 func (q *CircularQueue) Empty() bool {
-	return q.isEmpty
+	return false // need to implement
 }
 
 func (q *CircularQueue) Full() bool {
-	return q.isFull
+	return false // need to implement
 }
 
 func TestCircularQueue(t *testing.T) {
